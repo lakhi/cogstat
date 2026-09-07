@@ -28,9 +28,11 @@ OPTIONS = {
     , 'packages': ['numpy', 'scipy', 'matplotlib',
                         'pandas', 'pandas_flavor', 'statsmodels',
                         'pyreadstat',  'xlrd', 'openpyxl', 'pyreadr',
-                        'configobj',  'chardet', 'IPython', 'Jupyter',
-                        'pingouin', 'python-bidi', 'odfpy', 'scikit-posthocs',
-                        ]
+                        'configobj',  'chardet', 'IPython', 'Jupyter', 'pygments',
+                        'pingouin', 'bidi', 'odf', 'scikit_posthocs',
+                        ],
+    'includes': ['pygments.styles.monokai'],
+    'excludes': ['rpy2'],  # R support is not bundled in the Mac build; see cogstat_config R block
 }
 
 setup(
