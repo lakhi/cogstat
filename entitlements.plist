@@ -2,9 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
-    <key>com.apple.security.app-sandbox</key>
+    <!-- Developer ID distribution (NOT Mac App Store): the App Sandbox is
+         deliberately absent. Sandboxing without a provisioning profile would
+         cut the app off from the user's data files and break py2app's
+         bootstrap. -->
+
+    <!-- The hardened runtime enables library validation, which refuses any
+         Mach-O not signed by this Team ID. CPython dlopen()s extension
+         modules at will, so it has to be switched off. -->
+    <key>com.apple.security.cs.disable-library-validation</key>
     <true/>
-    <key>com.apple.security.files.user-selected.read-write</key>
+
+    <!-- ctypes/libffi build and execute trampolines at runtime. -->
+    <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+    <true/>
+
+    <!-- py2app's launcher sets DYLD_* so the bundled interpreter finds the
+         bundled frameworks instead of the system ones. -->
+    <key>com.apple.security.cs.allow-dyld-environment-variables</key>
     <true/>
   </dict>
 </plist>

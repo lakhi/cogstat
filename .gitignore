@@ -1,0 +1,16 @@
+/*-env/
+/temp/
+/.vscode/
+__pycache__/
+*.pyc
+/build/
+/dist/
+/CogStat.egg-info/
+*.dmg
+.DS_Store
+
+# Signing material - never commit
+*.p8
+*.cer
+*.p12
+*.certSigningRequest
